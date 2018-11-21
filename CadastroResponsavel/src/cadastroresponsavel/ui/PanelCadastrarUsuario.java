@@ -5,6 +5,8 @@
  */
 package cadastroresponsavel.ui;
 
+import cadastroresponsavel.controller.UsuarioController;
+import cadastroresponsavel.model.Usuario;
 import javax.swing.*;
 
 /**
@@ -145,18 +147,41 @@ public class PanelCadastrarUsuario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-
+        Usuario user = new Usuario();
+        String senha = String.valueOf(tfSenha.getPassword());
+        //String senhaRepetir = String.valueOf(tfSenhaRepetir.getPassword());
+        
+        user.setNome(tfNome.getText());
+        user.setProntuario(tfProntuario.getText());
+        
+        if(new String(tfSenha.getPassword()).equals(new String(tfSenhaRepetir.getPassword()))) {
+            JOptionPane.showMessageDialog(null, "Senhas conferem!");
+            user.setSenha(senha);
+        } else {
+            JOptionPane.showMessageDialog(null, "Senhas não conferem! Por favor digite senhas iguais");
+        }
+        
+        UsuarioController uc = new UsuarioController();
+        uc.cadastrarUsuario(user);
+        JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso");
+        limparFormulario();
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-        
+        System.exit(0);
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        // TODO add your handling code here:
+        limparFormulario();
     }//GEN-LAST:event_btLimparActionPerformed
 
-
+private void limparFormulario(){
+       tfNome.setText("");
+       tfProntuario.setText("");
+       tfSenha.setText("");
+       tfSenhaRepetir.setText("");
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btCancelar;
