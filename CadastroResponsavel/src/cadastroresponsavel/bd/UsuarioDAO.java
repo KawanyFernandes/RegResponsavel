@@ -51,6 +51,7 @@ public class UsuarioDAO {
             stm.setString(1, u.getProntuario());
             stm.setString(2, u.getSenha());
             rs = stm.executeQuery();
+            
             if (rs.next()){
                 String ProntuarioBanco = rs.getString(u.getProntuario());
                 System.out.println(ProntuarioBanco);
