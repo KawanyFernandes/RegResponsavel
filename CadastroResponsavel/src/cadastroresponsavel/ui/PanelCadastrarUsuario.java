@@ -155,8 +155,10 @@ public class PanelCadastrarUsuario extends javax.swing.JPanel {
         user.setProntuario(tfProntuario.getText());
         
         if(new String(tfSenha.getPassword()).equals(new String(tfSenhaRepetir.getPassword()))) {
-            JOptionPane.showMessageDialog(null, "Senhas conferem!");
             user.setSenha(senha);
+            validaCampos(user);
+            JOptionPane.showMessageDialog(null, "Senhas conferem!");
+            
         } else {
             JOptionPane.showMessageDialog(null, "Senhas não conferem! Por favor digite senhas iguais");
         }
@@ -167,6 +169,19 @@ public class PanelCadastrarUsuario extends javax.swing.JPanel {
         limparFormulario();
     }//GEN-LAST:event_btCadastrarActionPerformed
 
+    public void validaCampos(Usuario u){
+        if(u.getNome().equals("")){
+            JOptionPane.showMessageDialog(this, "Campo NOME obrigatório!");
+            tfNome.grabFocus();
+        }else if (u.getProntuario().equals("")){
+            JOptionPane.showMessageDialog(this, "Campo PRONTUARIO obrigatório!");
+            tfProntuario.grabFocus();
+        }else if(u.getSenha().equals("")){
+            JOptionPane.showMessageDialog(this, "Campo SENHA obrigatório!");
+            tfSenha.grabFocus();
+        }
+    }
+    
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btCancelarActionPerformed

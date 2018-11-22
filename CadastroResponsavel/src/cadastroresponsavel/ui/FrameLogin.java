@@ -129,24 +129,20 @@ public class FrameLogin extends javax.swing.JFrame {
         // se coincidir, a variavel loginSenhaCorreta deve ter o valor true
         Usuario user = new Usuario();
         String senha = String.valueOf(tfSenha.getPassword());
-        boolean respostaLogin;
+        boolean loginSenhaCorreta;
         
         user.setProntuario(tfProntuario.getText());
         user.setSenha(senha);
         
         UsuarioController uc = new UsuarioController();
         
-        respostaLogin = uc.verificarUsuario(user);
+        loginSenhaCorreta = uc.verificarUsuario(user);
         
-        // senao, deve ter o valor false
-        boolean loginSenhaCorreta = true;
-        
-        if(loginSenhaCorreta) {
+        if(loginSenhaCorreta == true){
             JFrame aplicacao = new FrameCadastroResponsaveis();
             aplicacao.setVisible(true);
             this.setVisible(false);
-        } else {
-        //senao coincidir, exibe mensagem de erro
+        }else{
             JOptionPane.showMessageDialog(this, "Login ou senha inválidos.");
         }
     }//GEN-LAST:event_btLogarActionPerformed

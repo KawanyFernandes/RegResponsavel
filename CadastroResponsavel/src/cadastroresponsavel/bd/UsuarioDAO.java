@@ -52,21 +52,14 @@ public class UsuarioDAO {
             stm.setString(2, u.getSenha());
             rs = stm.executeQuery();
             
-            if (rs.next()){
-                String ProntuarioBanco = rs.getString(u.getProntuario());
-                System.out.println(ProntuarioBanco);
-                if(ProntuarioBanco.equals(u.getProntuario())){
-                    return true;
-                //stm.close(); 
-                }else{
-                    JOptionPane.showMessageDialog(null, "Usuario não Confere!");
-                    return false;
-                } 
+            if (!rs.next()){
+                 return false;
+            }else{
+                return true;
             }
             
         }catch (SQLException ex) {
                 throw new RuntimeException("Exceção: " + ex);
         }
-        return false;
     } 
 }
