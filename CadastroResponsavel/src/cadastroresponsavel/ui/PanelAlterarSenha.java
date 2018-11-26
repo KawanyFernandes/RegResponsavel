@@ -5,6 +5,8 @@
  */
 package cadastroresponsavel.ui;
 
+import cadastroresponsavel.controller.UsuarioController;
+import cadastroresponsavel.model.Usuario;
 import javax.swing.*;
 
 /**
@@ -12,14 +14,24 @@ import javax.swing.*;
  * @author Andre
  */
 public class PanelAlterarSenha extends javax.swing.JPanel {
-
+    
+    Usuario usuario;
     /**
      * Creates new form PanelCadastroUsuario
      */
     public PanelAlterarSenha() {
         initComponents();
     }
-
+    public PanelAlterarSenha(Usuario user) {
+        initComponents();
+        tfProntuario.setText(user.getProntuario());
+        tfNome.setText(user.getNome());
+    }
+    public void enviaUsuario(Usuario usuario){
+        this.usuario = usuario;
+        tfProntuario.setText(usuario.getProntuario());
+        tfNome.setText(usuario.getNome());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -161,17 +173,31 @@ public class PanelAlterarSenha extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarActionPerformed
-
+        String senhaNova = String.valueOf(tfNovaSenha.getPassword());
+        
+        if(new String(tfNovaSenha.getPassword()).equals(new String(tfSenhaRepetir.getPassword()))) {
+            UsuarioController uc = new UsuarioController();
+            uc.alterarSenha(usuario,senhaNova);
+            JOptionPane.showMessageDialog(null, "Senha alterada com sucesso.");
+            limparFormulario();
+        } else {
+            JOptionPane.showMessageDialog(null, "Os dados não conferem, por favor insira dados corretos");
+        }
     }//GEN-LAST:event_btAlterarActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-        
+        System.exit(0);
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        // TODO add your handling code here:
+        limparFormulario();
     }//GEN-LAST:event_btLimparActionPerformed
 
+private void limparFormulario(){
+    tfSenha.setText("");
+    tfNovaSenha.setText("");
+    tfSenhaRepetir.setText("");
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAlterar;

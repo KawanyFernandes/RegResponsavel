@@ -6,9 +6,11 @@
             <file>file:/C:/POO/RegResponsavel/CadastroResponsavel/src/cadastroresponsavel/ui/FrameLogin.java</file>
             <file>file:/C:/POO/RegResponsavel/CadastroResponsavel/src/cadastroresponsavel/controller/UsuarioController.java</file>
             <file>file:/C:/POO/RegResponsavel/CadastroResponsavel/src/cadastroresponsavel/bd/UsuarioDAO.java</file>
+            <file>file:/C:/POO/RegResponsavel/CadastroResponsavel/src/cadastroresponsavel/ui/FrameCadastroResponsaveis.java</file>
+            <file>file:/C:/POO/RegResponsavel/CadastroResponsavel/src/cadastroresponsavel/ui/PanelCadastrarUsuario.java</file>
             <file>file:/C:/POO/RegResponsavel/CadastroResponsavel/src/cadastroresponsavel/model/Usuario.java</file>
             <file>file:/C:/POO/RegResponsavel/CadastroResponsavel/src/cadastroresponsavel/bd/ConnectionFactory.java</file>
-            <file>file:/C:/POO/RegResponsavel/CadastroResponsavel/src/cadastroresponsavel/CadastroResponsavel.java</file>
+            <file>file:/C:/POO/RegResponsavel/CadastroResponsavel/src/cadastroresponsavel/ui/PanelAlterarSenha.java</file>
         </group>
     </open-files>
 </project-private>

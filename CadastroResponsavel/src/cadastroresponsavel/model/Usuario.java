@@ -13,8 +13,7 @@ public class Usuario {
     private String nome;
     private String prontuario;
     private String senha;
-    //private String senhaRepetir;
-
+    
     public String getNome() {
         return nome;
     }

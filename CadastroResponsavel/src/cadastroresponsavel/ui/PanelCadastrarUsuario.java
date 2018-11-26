@@ -149,37 +149,40 @@ public class PanelCadastrarUsuario extends javax.swing.JPanel {
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
         Usuario user = new Usuario();
         String senha = String.valueOf(tfSenha.getPassword());
-        //String senhaRepetir = String.valueOf(tfSenhaRepetir.getPassword());
         
         user.setNome(tfNome.getText());
         user.setProntuario(tfProntuario.getText());
         
         if(new String(tfSenha.getPassword()).equals(new String(tfSenhaRepetir.getPassword()))) {
             user.setSenha(senha);
-            validaCampos(user);
-            JOptionPane.showMessageDialog(null, "Senhas conferem!");
-            
+            if(validaCampos(user) == true){
+                UsuarioController uc = new UsuarioController();
+                uc.cadastrarUsuario(user);
+                JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso");
+                limparFormulario();
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Senhas não conferem! Por favor digite senhas iguais");
         }
         
-        UsuarioController uc = new UsuarioController();
-        uc.cadastrarUsuario(user);
-        JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso");
-        limparFormulario();
+        
     }//GEN-LAST:event_btCadastrarActionPerformed
 
-    public void validaCampos(Usuario u){
+    private boolean validaCampos(Usuario u){
         if(u.getNome().equals("")){
             JOptionPane.showMessageDialog(this, "Campo NOME obrigatório!");
             tfNome.grabFocus();
+            return false;
         }else if (u.getProntuario().equals("")){
             JOptionPane.showMessageDialog(this, "Campo PRONTUARIO obrigatório!");
             tfProntuario.grabFocus();
+            return false;
         }else if(u.getSenha().equals("")){
             JOptionPane.showMessageDialog(this, "Campo SENHA obrigatório!");
             tfSenha.grabFocus();
+            return false;
         }
+        return true;
     }
     
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed

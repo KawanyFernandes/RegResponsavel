@@ -25,4 +25,12 @@ public class UsuarioController {
     public boolean  verificarUsuario(Usuario u){
         return userDao.verificaUsuario(u);
     }
+    
+    public boolean alterarSenha(Usuario u, String senhanova){
+        return userDao.alterarSenha(u, senhanova);
+    }
+    
+    public String achaUsuario(Usuario u){
+        return userDao.achaUsuario(u);
+    }
 }
