@@ -9,11 +9,11 @@ package cadastroresponsavel.model;
  *
  * @author kawany.fernandes
  */
-public class Usuario {
-    private String nome;
-    private int prontuario;
-    private String senha;
-    
+public class Responsavel {
+    String nome;
+    String telefoen;
+    String data;
+
     public String getNome() {
         return nome;
     }
@@ -22,20 +22,20 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public int getProntuario() {
-        return prontuario;
+    public String getTelefoen() {
+        return telefoen;
     }
 
-    public void setProntuario(int prontuario) {
-        this.prontuario = prontuario;
+    public void setTelefoen(String telefoen) {
+        this.telefoen = telefoen;
     }
 
-   
-    public String getSenha() {
-        return senha;
+    public String getData() {
+        return data;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setData(String data) {
+        this.data = data;
     }
+    
 }

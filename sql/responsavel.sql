@@ -25,34 +25,35 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuario`
+-- Estrutura da tabela `responsavel`
 --
 
-CREATE TABLE `usuario` (
-  `prontuario` int(11) NOT NULL,
+CREATE TABLE `responsavel` (
+  `id` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
-  `senha` varchar(50) NOT NULL
+  `telefone` varchar(50) NOT NULL,
+  `data` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `usuario`
---
-
-INSERT INTO `usuario` (`prontuario`, `nome`, `senha`) VALUES
-(1221, 'hhhhh', '111'),
-(1444, 'ddd', '1111'),
-(123456, 'karany', '123'),
-(1501909, 'Kawany', 'k123');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `usuario`
+-- Indexes for table `responsavel`
 --
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`prontuario`);
+ALTER TABLE `responsavel`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `responsavel`
+--
+ALTER TABLE `responsavel`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

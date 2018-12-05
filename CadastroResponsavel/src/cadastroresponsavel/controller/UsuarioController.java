@@ -33,4 +33,8 @@ public class UsuarioController {
     public String achaUsuario(Usuario u){
         return userDao.achaUsuario(u);
     }
+    
+    public boolean validaProntuario(Usuario u){
+        return userDao.validaProntuario(u);
+    }
 }

@@ -25,7 +25,7 @@ public class ConnectionFactory {
             
             try{
                 Class.forName("com.mysql.jdbc.Driver");
-                con = DriverManager.getConnection("jdbc:mysql://localhost/cadastrousuario?user=root");
+                con = DriverManager.getConnection("jdbc:mysql://localhost/cadastro_responsaveis?user=root");
             }catch(ClassNotFoundException cnfe){
                 System.out.println("Exceção de classe não encontrada.");
             }catch (SQLException sqle){

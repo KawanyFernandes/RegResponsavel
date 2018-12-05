@@ -24,12 +24,12 @@ public class PanelAlterarSenha extends javax.swing.JPanel {
     }
     public PanelAlterarSenha(Usuario user) {
         initComponents();
-        tfProntuario.setText(user.getProntuario());
+        tfProntuario.setText(Integer.toString(user.getProntuario()));
         tfNome.setText(user.getNome());
     }
     public void enviaUsuario(Usuario usuario){
         this.usuario = usuario;
-        tfProntuario.setText(usuario.getProntuario());
+        tfProntuario.setText(Integer.toString(usuario.getProntuario()));
         tfNome.setText(usuario.getNome());
     }
     /**

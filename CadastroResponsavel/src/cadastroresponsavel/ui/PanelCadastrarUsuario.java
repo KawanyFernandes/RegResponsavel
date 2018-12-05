@@ -77,6 +77,12 @@ public class PanelCadastrarUsuario extends javax.swing.JPanel {
 
         lbProntuario.setText("Prontuário:");
 
+        tfProntuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfProntuarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -151,15 +157,20 @@ public class PanelCadastrarUsuario extends javax.swing.JPanel {
         String senha = String.valueOf(tfSenha.getPassword());
         
         user.setNome(tfNome.getText());
-        user.setProntuario(tfProntuario.getText());
+        user.setProntuario(Integer.parseInt("0" + tfProntuario.getText()));
         
         if(new String(tfSenha.getPassword()).equals(new String(tfSenhaRepetir.getPassword()))) {
             user.setSenha(senha);
             if(validaCampos(user) == true){
                 UsuarioController uc = new UsuarioController();
-                uc.cadastrarUsuario(user);
-                JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso");
-                limparFormulario();
+                if(uc.validaProntuario(user)== false){
+                    uc.cadastrarUsuario(user);
+                    JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso");
+                    limparFormulario();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Esse prontuario já existe na base de dados");
+                    limparFormulario();
+                }
             }
         } else {
             JOptionPane.showMessageDialog(null, "Senhas não conferem! Por favor digite senhas iguais");
@@ -173,7 +184,7 @@ public class PanelCadastrarUsuario extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Campo NOME obrigatório!");
             tfNome.grabFocus();
             return false;
-        }else if (u.getProntuario().equals("")){
+        }else if (u.getProntuario() == 0){
             JOptionPane.showMessageDialog(this, "Campo PRONTUARIO obrigatório!");
             tfProntuario.grabFocus();
             return false;
@@ -192,6 +203,10 @@ public class PanelCadastrarUsuario extends javax.swing.JPanel {
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         limparFormulario();
     }//GEN-LAST:event_btLimparActionPerformed
+
+    private void tfProntuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProntuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfProntuarioActionPerformed
 
 private void limparFormulario(){
        tfNome.setText("");

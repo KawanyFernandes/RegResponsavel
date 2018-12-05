@@ -14,7 +14,8 @@ import javax.swing.*;
  */
 public class FrameLogin extends javax.swing.JFrame {
 
-    public static String senha, prontuario;
+    public static String senha;
+    public static int prontuario;
     /**
      * Creates new form FrameLogin
      */
@@ -130,7 +131,7 @@ public class FrameLogin extends javax.swing.JFrame {
         // se coincidir, a variavel loginSenhaCorreta deve ter o valor true
         Usuario user = new Usuario();
         senha = String.valueOf(tfSenha.getPassword());
-        prontuario = tfProntuario.getText();
+        prontuario = Integer.parseInt(tfProntuario.getText());
         boolean loginSenhaCorreta;
         
         user.setProntuario(prontuario);
