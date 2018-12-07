@@ -5,11 +5,14 @@
  */
 package cadastroresponsavel.bd;
 
+import cadastroresponsavel.model.Aluno;
 import cadastroresponsavel.model.Responsavel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -33,4 +36,25 @@ public class ResponsavelDAO {
             throw new RuntimeException("Exceção: " + ex);
         }
     }
+    
+     public List<Responsavel> obterResponsavel(Aluno a) {
+         List<Responsavel> responsaveis = new ArrayList();
+         try{
+            
+            con = cf.recebeConexao();
+            PreparedStatement stm = con.prepareStatement("SELECT * FROM responsavel WHERE id_aluno = ?");
+            stm.setInt(1, a.getProntuario());
+            
+            ResultSet rs = stm.executeQuery();
+            while(rs.next()) {
+                Responsavel r = new Responsavel();
+                r.setNome(rs.getString("nome"));
+                responsaveis.add(r);
+            }
+        } catch (SQLException sqle){
+            System.out.println("Exceção de conexão ao banco.");
+            sqle.printStackTrace();
+        }
+         return responsaveis;
+     }
 }

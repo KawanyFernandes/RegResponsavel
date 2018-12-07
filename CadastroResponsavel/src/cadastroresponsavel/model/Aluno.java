@@ -6,6 +6,8 @@
 package cadastroresponsavel.model;
 
 import cadastroresponsavel.ui.AlunosTableModelo;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 /**
@@ -13,7 +15,9 @@ import java.util.Observable;
  * @author kawany.fernandes
  */
 public class Aluno extends Observable{
-    private String nome;
+    private List<Aluno> alunos = new ArrayList();
+
+   private String nome;
     private int prontuario;
     private String telefone;
     private String data;
@@ -50,6 +54,12 @@ public class Aluno extends Observable{
     public void setData(String data) {
         this.data = data;
     }
+ public List<Aluno> getAlunos() {
+        return alunos;
+    }
 
+    public void setAlunos(List<Aluno> alunos) {
+        this.alunos = alunos;
+    }
        
 }

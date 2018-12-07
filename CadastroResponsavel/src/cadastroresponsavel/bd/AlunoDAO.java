@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class AlunoDAO {
     private PreparedStatement stm = null;
     private ResultSet rs = null;
     private Connection con = null;
+    private ResponsavelDAO resDAO = new ResponsavelDAO();
     
     public void inserir(Aluno a){
         try{
@@ -40,27 +42,24 @@ public class AlunoDAO {
     }
     
     public List visualizarAlunos(){
+        
+        
         try {
             List a = new LinkedList();
             List r = new LinkedList();
             
             con = cf.recebeConexao();
-            stm = con.prepareStatement("SELECT a.nome, a.prontuario, r.nome FROM aluno ");
+            stm = con.prepareStatement("SELECT a.nome, a.prontuario, r.nome FROM aluno a JOIN responsavel r ON a.prontuario=r.id_aluno");
             rs = stm.executeQuery();
             
             while(rs.next()) {
                 Aluno aluno = new Aluno();
-                Responsavel resp = new Responsavel();
+                
                 aluno.setProntuario(rs.getInt("prontuario"));
                 aluno.setNome(rs.getString("nome"));
-                resp.setNome("nome");
-//                contato.setCodigo(rs.getInt("codigo"));
-//                contato.setNome(rs.getString("nome"));
-//                contato.setTelefonePrincipal(rs.getString("telefonePrincipal"));                
-//                contato.setTelefoneSecundario(rs.getString("telefoneSecundario"));
-//                contato.setHorario(rs.getString("horario"));
-                //obter todas as chamadas daquele contato
                 
+                List responsaveis = resDAO.obterResponsavel(aluno);
+                aluno.setAlunos(a);
                 a.add(aluno);
             }   
             
