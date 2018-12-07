@@ -5,6 +5,10 @@
  */
 package cadastroresponsavel.ui;
 
+import cadastroresponsavel.controller.ResponsavelController;
+import cadastroresponsavel.model.Responsavel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Andre
@@ -71,6 +75,11 @@ public class FrameCadastrarResponsavel extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        tfTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfTelefoneActionPerformed(evt);
+            }
+        });
 
         btInserir.setText("Inserir");
         btInserir.addActionListener(new java.awt.event.ActionListener() {
@@ -100,8 +109,7 @@ public class FrameCadastrarResponsavel extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbNome)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
@@ -147,13 +155,33 @@ public class FrameCadastrarResponsavel extends javax.swing.JFrame {
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        // TODO add your handling code here:
+        limpar();
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
-
+        Responsavel res = new Responsavel();
+        
+        res.setNome(tfNome.getText());
+        res.setData(tfDataNascimento.getText());
+        res.setTelefone(tfTelefone.getText());
+        
+        ResponsavelController rc = new ResponsavelController();
+        
+        rc.inserir(res);
+        limpar();
+        JOptionPane.showMessageDialog(null, "Responsável cadastrado com sucesso!");
     }//GEN-LAST:event_btInserirActionPerformed
 
+    private void tfTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfTelefoneActionPerformed
+
+    private void limpar(){
+        tfNome.setText("");
+        tfDataNascimento.setText("");
+        tfTelefone.setText("");
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCancelar;
     private javax.swing.JButton btInserir;

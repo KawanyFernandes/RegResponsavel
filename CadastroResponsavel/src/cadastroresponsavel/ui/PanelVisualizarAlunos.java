@@ -5,17 +5,27 @@
  */
 package cadastroresponsavel.ui;
 
+import cadastroresponsavel.controller.AlunoController;
+import cadastroresponsavel.model.Aluno;
+import java.awt.BorderLayout;
+import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Andre
  */
 public class PanelVisualizarAlunos extends javax.swing.JPanel {
-
+    private List<Aluno> alunos;
     /**
      * Creates new form PanelVisualizarAlunos
      */
     public PanelVisualizarAlunos() {
         initComponents();
+        AlunoController ac = new AlunoController();
+        alunos = ac.visualizarAluno();
+        this.preencherTabela(alunos);
     }
 
     /**
@@ -194,7 +204,13 @@ public class PanelVisualizarAlunos extends javax.swing.JPanel {
     }//GEN-LAST:event_btOrdenarNomeActionPerformed
 
     private void btAlterarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarAlunoActionPerformed
-
+        JPanel panel = new PanelAlterarAluno();
+        JFrame frame = new JFrame();
+         
+        frame.setSize(605, 523);
+        frame.getContentPane().add(BorderLayout.CENTER,panel);
+        frame.add(panel);
+        frame.setVisible(true);
     }//GEN-LAST:event_btAlterarAlunoActionPerformed
 
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
@@ -206,6 +222,13 @@ public class PanelVisualizarAlunos extends javax.swing.JPanel {
     }//GEN-LAST:event_btProcurarAlunoActionPerformed
 
 
+    private void preencherTabela(List alunos) {
+       
+        AlunosTableModelo modeloTabela = new AlunosTableModelo(alunos);
+       
+        tbAlunos.setModel(modeloTabela);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAlterarAluno;
     private javax.swing.JButton btOrdenarNome;

@@ -53,6 +53,12 @@ public class PanelAlterarAluno extends javax.swing.JPanel {
         lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTitulo.setText("Cadastrar Alterar Aluno");
 
+        tfNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfNomeKeyTyped(evt);
+            }
+        });
+
         btAlterar.setText("Alterar");
         btAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +133,7 @@ public class PanelAlterarAluno extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lbTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE))
+                        .addComponent(lbTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -192,7 +198,7 @@ public class PanelAlterarAluno extends javax.swing.JPanel {
                     .addComponent(btAlterar)
                     .addComponent(btCancelar)
                     .addComponent(btLimpar))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -216,6 +222,10 @@ public class PanelAlterarAluno extends javax.swing.JPanel {
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btRemoverActionPerformed
+
+    private void tfNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNomeKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfNomeKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

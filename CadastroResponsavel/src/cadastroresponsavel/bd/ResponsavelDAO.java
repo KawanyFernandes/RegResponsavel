@@ -24,9 +24,9 @@ public class ResponsavelDAO {
     public void inserir(Responsavel r){
         try{
             con = cf.recebeConexao();
-            stm = con.prepareStatement("INSERT INTO usuario (nome, telefone, data) VALUES (?,?,?)");
+            stm = con.prepareStatement("INSERT INTO responsavel (nome, telefone, data) VALUES (?,?,?)");
             stm.setString(1, r.getNome());
-            stm.setString(2, r.getTelefoen());
+            stm.setString(2, r.getTelefone());
             stm.setString(3, r.getData());
             stm.executeUpdate();
         }catch (SQLException ex) {

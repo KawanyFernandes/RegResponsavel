@@ -5,22 +5,18 @@
  */
 package cadastroresponsavel.model;
 
+import cadastroresponsavel.ui.AlunosTableModelo;
+import java.util.Observable;
+
 /**
  *
  * @author kawany.fernandes
  */
-public class Responsavel {
+public class Aluno extends Observable{
     private String nome;
+    private int prontuario;
     private String telefone;
     private String data;
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
 
     public String getNome() {
         return nome;
@@ -30,6 +26,23 @@ public class Responsavel {
         this.nome = nome;
     }
 
+    public int getProntuario() {
+        return prontuario;
+    }
+
+    public void setProntuario(int prontuario) {
+        this.prontuario = prontuario;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    
     public String getData() {
         return data;
     }
@@ -37,5 +50,6 @@ public class Responsavel {
     public void setData(String data) {
         this.data = data;
     }
-    
+
+       
 }

@@ -37,7 +37,6 @@ public class FrameCadastroResponsaveis extends javax.swing.JFrame {
         mnCadastro = new javax.swing.JMenu();
         mnCadastrarNovo = new javax.swing.JMenuItem();
         mnVisualizarAlunos = new javax.swing.JMenuItem();
-        mnAlterarAlunos = new javax.swing.JMenuItem();
         mnRelatorios = new javax.swing.JMenu();
         mnRelatorioAlunos = new javax.swing.JMenuItem();
         mnRelatorioResponsaveisAluno = new javax.swing.JMenuItem();
@@ -69,14 +68,6 @@ public class FrameCadastroResponsaveis extends javax.swing.JFrame {
             }
         });
         mnCadastro.add(mnVisualizarAlunos);
-
-        mnAlterarAlunos.setText("Alterar cadastro...");
-        mnAlterarAlunos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnAlterarAlunosActionPerformed(evt);
-            }
-        });
-        mnCadastro.add(mnAlterarAlunos);
 
         bmBarraMenu.add(mnCadastro);
 
@@ -176,16 +167,9 @@ public class FrameCadastroResponsaveis extends javax.swing.JFrame {
         this.setSize(this.getPreferredSize());
     }//GEN-LAST:event_mnVisualizarAlunosActionPerformed
 
-    private void mnAlterarAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAlterarAlunosActionPerformed
-        JPanel panel = new PanelAlterarAluno();
-        this.setContentPane(panel); 
-        this.setSize(this.getPreferredSize());
-    }//GEN-LAST:event_mnAlterarAlunosActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar bmBarraMenu;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem mnAlterarAlunos;
     private javax.swing.JMenuItem mnAlterarSenha;
     private javax.swing.JMenuItem mnCadastrarNovo;
     private javax.swing.JMenuItem mnCadastrarUsuario;
