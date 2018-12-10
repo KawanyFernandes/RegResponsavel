@@ -6,7 +6,9 @@
 package cadastroresponsavel.controller;
 
 import cadastroresponsavel.bd.ResponsavelDAO;
+import cadastroresponsavel.model.Aluno;
 import cadastroresponsavel.model.Responsavel;
+import java.util.List;
 
 /**
  *
@@ -17,5 +19,13 @@ public class ResponsavelController {
     
     public void inserir(Responsavel r){
         resDAO.inserir(r);
+    }
+    
+    public List<Responsavel> obterResponsavel(Aluno a){
+        return resDAO.obterResponsavel(a);
+    }
+    
+    public List visualizarResponsaveis(){
+        return resDAO.visualizarResponsaveis();
     }
 }

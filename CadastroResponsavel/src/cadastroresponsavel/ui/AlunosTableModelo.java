@@ -5,8 +5,10 @@
  */
 package cadastroresponsavel.ui;
 
+import cadastroresponsavel.bd.ResponsavelDAO;
 import cadastroresponsavel.controller.AlunoController;
 import cadastroresponsavel.model.Aluno;
+import cadastroresponsavel.model.Responsavel;
 import javax.swing.table.*;
 import java.util.*;
 
@@ -17,7 +19,10 @@ import java.util.*;
  */
 public class AlunosTableModelo extends AbstractTableModel implements Observer {
     private List<Aluno> listaAlunos;
+    
     private String[] colunas = {"Nome", "Prontuario", "Responsável"};
+    
+    private ResponsavelDAO resDAO = new ResponsavelDAO();
     
     public AlunosTableModelo(List<Aluno> a) {
         listaAlunos = a;
@@ -40,14 +45,25 @@ public class AlunosTableModelo extends AbstractTableModel implements Observer {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Aluno alunos = listaAlunos.get(rowIndex);
+        Aluno aluno = listaAlunos.get(rowIndex);
+        Responsavel resp = null;
+        if(!resDAO.obterResponsavel(aluno).isEmpty())
+        {
+         resp = resDAO.obterResponsavel(aluno).get(0);
+        }
         switch(columnIndex) {
             case 0:
-                return alunos.getNome();
+                return aluno.getNome();
             case 1:
-                return alunos.getProntuario();
+                return aluno.getProntuario();
             case 2:
-                return alunos.getNome();
+                if(resp == null){
+                    return "Sem responsavel";
+                }
+                else
+                {
+                    return resp.getNome();
+                }
             default:
                 return "Dado inválido";
         }
@@ -66,6 +82,7 @@ public class AlunosTableModelo extends AbstractTableModel implements Observer {
     @Override 
     public void setValueAt(Object dado, int rowIndex, int columnIndex) {
         Aluno a = listaAlunos.get(rowIndex);
+        //Responsavel resp = listaResponsavel.get(rowIndex);
         switch(columnIndex) {
             case 0:
                 String nome = (String) dado;
@@ -76,11 +93,10 @@ public class AlunosTableModelo extends AbstractTableModel implements Observer {
                 a.setProntuario(prontuario);
                 break;
             case 2:
-                String nome2 = (String) dado;
-                a.setTelefone(nome2.toString());
+                String nomeresp = (String) dado;
+                a.setNome(nomeresp);
                 break;
         }
-        //TODO: chamar o metodo que atualiza o objeto na base de dados
         AlunoController ac = new AlunoController();
         ac.atualizar(a);
     }    

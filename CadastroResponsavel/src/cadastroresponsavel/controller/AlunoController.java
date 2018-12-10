@@ -27,4 +27,8 @@ public class AlunoController {
     public void atualizar(Aluno a) {
         aluDAO.atualizar(a);
     }
+    
+    public Aluno selectAluno(Aluno a){
+        return aluDAO.selectAluno(a);
+    }
 }

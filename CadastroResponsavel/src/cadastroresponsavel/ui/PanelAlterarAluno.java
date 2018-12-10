@@ -5,6 +5,11 @@
  */
 package cadastroresponsavel.ui;
 
+import cadastroresponsavel.controller.AlunoController;
+import cadastroresponsavel.controller.ResponsavelController;
+import cadastroresponsavel.model.Aluno;
+import cadastroresponsavel.model.Responsavel;
+import java.util.List;
 import javax.swing.*;
 
 /**
@@ -12,13 +17,25 @@ import javax.swing.*;
  * @author Andre
  */
 public class PanelAlterarAluno extends javax.swing.JPanel {
-
+    Aluno a = new Aluno();
+    AlunoController ac = new AlunoController();
+    ResponsavelController rc = new ResponsavelController();
+    private List<Responsavel> responsaveis;
     /**
      * Creates new form PanelCadastroUsuario
      */
-    public PanelAlterarAluno() {
+    public PanelAlterarAluno(Aluno a) {
         initComponents();
+        tfProntuario.setText(Integer.toString(a.getProntuario()));
+        tfNome.setText(a.getNome());
+        tfTelefone.setText(a.getTelefone());
+        tfDataNascimento.setText(a.getData());
+        
+        responsaveis = rc.obterResponsavel(a);
+        this.preencherTabelaResponsaveis(responsaveis);
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -203,7 +220,15 @@ public class PanelAlterarAluno extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarActionPerformed
-        // TODO add your handling code here:
+        
+        a.setNome(tfNome.getText());
+        a.setData(tfDataNascimento.getText());
+        a.setProntuario(Integer.parseInt("0" + tfProntuario.getText()));
+        a.setTelefone(tfTelefone.getText());
+        
+        ac.atualizar(a);
+        limpar();
+        JOptionPane.showMessageDialog(null, "Dados atualizados com sucesso!");
     }//GEN-LAST:event_btAlterarActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
@@ -211,22 +236,43 @@ public class PanelAlterarAluno extends javax.swing.JPanel {
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        // TODO add your handling code here:
+        limpar();
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
-        JFrame frame = new FrameCadastrarResponsavel();
+        a.setProntuario(Integer.parseInt("0" + tfProntuario.getText()));
+        JFrame frame = new FrameCadastrarResponsavel(a);
         frame.setVisible(true);
     }//GEN-LAST:event_btAdicionarActionPerformed
 
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
-        // TODO add your handling code here:
+         int linha = tbResponsaveis.getSelectedRow();
+         if(linha < 0) {
+            JOptionPane.showMessageDialog(this, "Selecione um contato.");
+        } else {
+            ResponsavelController rc = new ResponsavelController();
+            
+            
+        }
     }//GEN-LAST:event_btRemoverActionPerformed
 
     private void tfNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNomeKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNomeKeyTyped
 
+    private void limpar(){
+        tfNome.setText("");
+        tfProntuario.setText("");
+        tfTelefone.setText("");
+        tfDataNascimento.setText("");
+    }
+    
+     private void preencherTabelaResponsaveis(List responsaveis) {
+       
+        ResponsavelTableModel modeloTabela = new ResponsavelTableModel(responsaveis);
+       
+        tbResponsaveis.setModel(modeloTabela);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdicionar;

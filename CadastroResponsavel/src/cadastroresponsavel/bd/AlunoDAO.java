@@ -42,14 +42,12 @@ public class AlunoDAO {
     }
     
     public List visualizarAlunos(){
-        
-        
-        try {
+       try {
             List a = new LinkedList();
-            List r = new LinkedList();
+            //List r = new LinkedList();
             
             con = cf.recebeConexao();
-            stm = con.prepareStatement("SELECT a.nome, a.prontuario, r.nome FROM aluno a JOIN responsavel r ON a.prontuario=r.id_aluno");
+            stm = con.prepareStatement("SELECT * FROM aluno ");
             rs = stm.executeQuery();
             
             while(rs.next()) {
@@ -57,8 +55,9 @@ public class AlunoDAO {
                 
                 aluno.setProntuario(rs.getInt("prontuario"));
                 aluno.setNome(rs.getString("nome"));
+                aluno.setData(rs.getString("data"));
+                aluno.setTelefone(rs.getString("telefone"));
                 
-                List responsaveis = resDAO.obterResponsavel(aluno);
                 aluno.setAlunos(a);
                 a.add(aluno);
             }   
@@ -72,14 +71,37 @@ public class AlunoDAO {
      public void atualizar(Aluno a) {
         try {
             con = cf.recebeConexao();
-            stm = con.prepareStatement("UPDATE aluno SET nome = ?, telefone = ? WHERE prontuario = ?");
+            stm = con.prepareStatement("UPDATE aluno SET nome = ?, telefone = ?, data = ? WHERE prontuario = ?");
             stm.setString(1, a.getNome());
             stm.setString(2, a.getTelefone());
-            stm.setInt(3, a.getProntuario());
+            stm.setString(3, a.getData());
+            stm.setInt(4, a.getProntuario());
             
             stm.executeUpdate();                
         } catch (SQLException ex) {
             throw new RuntimeException("Exceção: " + ex);
         } 
     }
+     
+     public Aluno selectAluno(Aluno a){
+         try {
+            Aluno aluno = new Aluno();
+            con = cf.recebeConexao();
+            stm = con.prepareStatement("SELECT * FROM aluno where prontuario = ?");
+            stm.setInt(1, a.getProntuario());
+            rs = stm.executeQuery();
+            
+            if(rs.next()) {
+                aluno.setProntuario(rs.getInt("prontuario"));
+                aluno.setNome(rs.getString("nome"));
+                aluno.setData(rs.getString("data"));
+                aluno.setTelefone(rs.getString("telefone"));
+                
+            }   
+            
+            return aluno;           
+        } catch (SQLException ex) {
+            throw new RuntimeException("Exceção: " + ex);
+        }
+     }
 }

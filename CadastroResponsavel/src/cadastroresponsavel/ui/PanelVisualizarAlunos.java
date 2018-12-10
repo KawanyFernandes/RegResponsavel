@@ -10,6 +10,7 @@ import cadastroresponsavel.model.Aluno;
 import java.awt.BorderLayout;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -204,13 +205,23 @@ public class PanelVisualizarAlunos extends javax.swing.JPanel {
     }//GEN-LAST:event_btOrdenarNomeActionPerformed
 
     private void btAlterarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarAlunoActionPerformed
-        JPanel panel = new PanelAlterarAluno();
+        AlunoController ac = new AlunoController();
+        Aluno alu = new Aluno();
         JFrame frame = new JFrame();
-         
-        frame.setSize(605, 523);
-        frame.getContentPane().add(BorderLayout.CENTER,panel);
-        frame.add(panel);
-        frame.setVisible(true);
+        
+        int linha = tbAlunos.getSelectedRow();
+        
+        if(linha < 0) {
+            JOptionPane.showMessageDialog(this, "Selecione um contato.");
+        } else {
+            
+            alu = ac.selectAluno(alunos.get(linha));
+            JPanel panel = new PanelAlterarAluno(alu);
+            frame.setSize(605, 523);
+            frame.getContentPane().add(BorderLayout.CENTER,panel);
+            frame.add(panel);
+            frame.setVisible(true);
+        }
     }//GEN-LAST:event_btAlterarAlunoActionPerformed
 
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed

@@ -6,6 +6,7 @@
 package cadastroresponsavel.ui;
 
 import cadastroresponsavel.controller.ResponsavelController;
+import cadastroresponsavel.model.Aluno;
 import cadastroresponsavel.model.Responsavel;
 import javax.swing.JOptionPane;
 
@@ -15,11 +16,14 @@ import javax.swing.JOptionPane;
  */
 public class FrameCadastrarResponsavel extends javax.swing.JFrame {
 
+    public int IdAluno;
     /**
      * Creates new form FrameCadastroResponsavel
      */
-    public FrameCadastrarResponsavel() {
+    public FrameCadastrarResponsavel(Aluno a) {
         initComponents();
+        this.IdAluno = Integer.parseInt("0" + a.getProntuario());
+        
     }
 
     /**
@@ -93,6 +97,16 @@ public class FrameCadastrarResponsavel extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbDataNascimento)
+                    .addComponent(lbTelefone))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
@@ -111,16 +125,6 @@ public class FrameCadastrarResponsavel extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbDataNascimento)
-                    .addComponent(lbTelefone))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,6 +168,7 @@ public class FrameCadastrarResponsavel extends javax.swing.JFrame {
         res.setNome(tfNome.getText());
         res.setData(tfDataNascimento.getText());
         res.setTelefone(tfTelefone.getText());
+        res.setAlunoID(this.IdAluno);
         
         ResponsavelController rc = new ResponsavelController();
         

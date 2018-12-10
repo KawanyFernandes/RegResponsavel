@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -27,17 +28,18 @@ public class ResponsavelDAO {
     public void inserir(Responsavel r){
         try{
             con = cf.recebeConexao();
-            stm = con.prepareStatement("INSERT INTO responsavel (nome, telefone, data) VALUES (?,?,?)");
+            stm = con.prepareStatement("INSERT INTO responsavel (nome, telefone, data, id_aluno) VALUES (?,?,?,?)");
             stm.setString(1, r.getNome());
             stm.setString(2, r.getTelefone());
             stm.setString(3, r.getData());
+            stm.setInt(4, r.getAlunoID());
             stm.executeUpdate();
         }catch (SQLException ex) {
             throw new RuntimeException("Exceção: " + ex);
         }
     }
     
-     public List<Responsavel> obterResponsavel(Aluno a) {
+    public List<Responsavel> obterResponsavel(Aluno a) {
          List<Responsavel> responsaveis = new ArrayList();
          try{
             
@@ -49,6 +51,7 @@ public class ResponsavelDAO {
             while(rs.next()) {
                 Responsavel r = new Responsavel();
                 r.setNome(rs.getString("nome"));
+                r.setTelefone(rs.getString("telefone"));
                 responsaveis.add(r);
             }
         } catch (SQLException sqle){
@@ -56,5 +59,45 @@ public class ResponsavelDAO {
             sqle.printStackTrace();
         }
          return responsaveis;
-     }
+    }
+     
+    public List visualizarResponsaveis(){
+       try {
+            List a = new LinkedList();
+            //List r = new LinkedList();
+            
+            con = cf.recebeConexao();
+            stm = con.prepareStatement("SELECT * FROM responsavel ");
+            rs = stm.executeQuery();
+            
+            while(rs.next()) {
+                Responsavel resp = new Responsavel();
+                
+                resp.setNome(rs.getString("nome"));
+                resp.setData(rs.getString("data"));
+                resp.setTelefone(rs.getString("telefone"));
+                resp.setAlunoID(rs.getInt("id_aluno"));
+                
+                resp.setResp(a);
+                a.add(resp);
+            }   
+            
+            return a;           
+        } catch (SQLException ex) {
+            throw new RuntimeException("Exceção: " + ex);
+        }
+    }
+   //"" 
+    public void removerResponsavel(Responsavel r){
+         try {
+            con = cf.recebeConexao();
+            stm = con.prepareStatement("DELETE * FROM responsavel where  = ?");
+            stm.setString(1, r.getNome());
+            
+            
+            stm.executeUpdate();                
+        } catch (SQLException ex) {
+            throw new RuntimeException("Exceção: " + ex);
+        } 
+    }
 }
