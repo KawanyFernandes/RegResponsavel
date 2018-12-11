@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -104,4 +105,16 @@ public class AlunoDAO {
             throw new RuntimeException("Exceção: " + ex);
         }
      }
+     
+    public void remover(Aluno a) {
+        try {
+            con = cf.recebeConexao();
+            stm = con.prepareStatement("DELETE FROM aluno where prontuario = ?");
+            stm.setInt(1, a.getProntuario());
+            
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            throw new RuntimeException("Exceção: " + ex);
+        } 
+    }
 }

@@ -232,7 +232,7 @@ public class PanelAlterarAluno extends javax.swing.JPanel {
     }//GEN-LAST:event_btAlterarActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
@@ -246,13 +246,14 @@ public class PanelAlterarAluno extends javax.swing.JPanel {
     }//GEN-LAST:event_btAdicionarActionPerformed
 
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
-         int linha = tbResponsaveis.getSelectedRow();
-         if(linha < 0) {
+        Responsavel resp = new Responsavel();
+        int linha = tbResponsaveis.getSelectedRow();
+        if(linha < 0) {
             JOptionPane.showMessageDialog(this, "Selecione um contato.");
         } else {
             ResponsavelController rc = new ResponsavelController();
-            
-            
+            rc.removerResponsavel(responsaveis.get(linha));
+            JOptionPane.showMessageDialog(null, "Responsavel removido com sucesso!");
         }
     }//GEN-LAST:event_btRemoverActionPerformed
 

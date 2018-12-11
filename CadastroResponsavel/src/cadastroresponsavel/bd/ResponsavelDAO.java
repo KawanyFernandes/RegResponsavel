@@ -50,6 +50,7 @@ public class ResponsavelDAO {
             ResultSet rs = stm.executeQuery();
             while(rs.next()) {
                 Responsavel r = new Responsavel();
+                r.setResponsavelID(rs.getInt("id"));
                 r.setNome(rs.getString("nome"));
                 r.setTelefone(rs.getString("telefone"));
                 responsaveis.add(r);
@@ -87,12 +88,12 @@ public class ResponsavelDAO {
             throw new RuntimeException("Exceção: " + ex);
         }
     }
-   //"" 
+   
     public void removerResponsavel(Responsavel r){
          try {
             con = cf.recebeConexao();
-            stm = con.prepareStatement("DELETE * FROM responsavel where  = ?");
-            stm.setString(1, r.getNome());
+            stm = con.prepareStatement("DELETE FROM responsavel where  id = ?");
+            stm.setInt(1, r.getResponsavelID());
             
             
             stm.executeUpdate();                

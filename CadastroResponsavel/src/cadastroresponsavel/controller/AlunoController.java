@@ -31,4 +31,8 @@ public class AlunoController {
     public Aluno selectAluno(Aluno a){
         return aluDAO.selectAluno(a);
     }
+    
+    public void remover(Aluno a){
+        aluDAO.remover(a);
+    }
 }

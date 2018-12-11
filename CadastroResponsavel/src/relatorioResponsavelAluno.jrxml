@@ -7,6 +7,9 @@
 	<field name="nome" class="java.lang.String"/>
 	<field name="telefone" class="java.lang.String"/>
 	<field name="data" class="java.lang.String"/>
+	<field name="aluno.nome" class="java.lang.String"/>
+	<field name="aluno.prontuario" class="java.lang.Integer"/>
+	<field name="id_aluno" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -33,16 +36,34 @@
 				<text><![CDATA[nome]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="120" y="0" width="100" height="30" uuid="72c0fd47-514b-47bc-b09c-4d8296b73838">
+				<reportElement x="100" y="0" width="100" height="30" uuid="72c0fd47-514b-47bc-b09c-4d8296b73838">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5189a3db-7673-43fc-8e5d-8311f03f5e17"/>
 				</reportElement>
 				<text><![CDATA[telefone]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="250" y="0" width="100" height="30" uuid="00b4842f-f70b-4f06-9c99-1875a844f612">
+				<reportElement x="200" y="0" width="100" height="30" uuid="00b4842f-f70b-4f06-9c99-1875a844f612">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a3ebb1bc-02b7-4604-81ae-e4ec88a0414e"/>
 				</reportElement>
 				<text><![CDATA[data]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="30" uuid="3fc04405-d2e0-4864-a599-f6da89b8bbfe">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4126e368-02b4-4772-8198-f408930c58a7"/>
+				</reportElement>
+				<text><![CDATA[aluno.nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="80" height="30" uuid="ff798101-4a25-4890-b6ae-332da79bf07c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="11f5d910-4807-413c-ade0-f3abb22a7dfe"/>
+				</reportElement>
+				<text><![CDATA[aluno.prontuario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="0" width="64" height="30" uuid="5e822dda-3949-46dc-999d-8ace0e670f17">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ab5e8815-0f7c-4384-8671-b6364cfe3df1"/>
+				</reportElement>
+				<text><![CDATA[id_aluno]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -55,16 +76,34 @@
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="120" y="0" width="100" height="30" uuid="82803a48-8216-414e-8fe0-36706fdba30a">
+				<reportElement x="100" y="0" width="100" height="30" uuid="82803a48-8216-414e-8fe0-36706fdba30a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5189a3db-7673-43fc-8e5d-8311f03f5e17"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{telefone}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="250" y="0" width="100" height="30" uuid="fda7ae13-da9f-423f-9fbd-4023620ea0bf">
+				<reportElement x="200" y="0" width="100" height="30" uuid="fda7ae13-da9f-423f-9fbd-4023620ea0bf">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a3ebb1bc-02b7-4604-81ae-e4ec88a0414e"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="30" uuid="891a2007-4ab5-461e-a2f6-a11567d99fc7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4126e368-02b4-4772-8198-f408930c58a7"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{aluno.nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="80" height="30" uuid="689498e2-62aa-44fe-b85e-252c1527f565">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="11f5d910-4807-413c-ade0-f3abb22a7dfe"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{aluno.prontuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="475" y="0" width="70" height="30" uuid="f50f9d8f-5bfc-45b5-91cf-0e329ab440b9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ab5e8815-0f7c-4384-8671-b6364cfe3df1"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{id_aluno}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -12,14 +12,24 @@ import java.util.List;
  *
  * @author kawany.fernandes
  */
-public class Responsavel {
+public class Responsavel implements Comparable<Responsavel>{
     private List<Responsavel> resp = new ArrayList();
-
-    
+    private Aluno aluno;
     private String nome;
     private String telefone;
     private String data;
     private int alunoID;
+    private int responsavelID;
+
+    
+    
+    public int getResponsavelID() {
+        return responsavelID;
+    }
+
+    public void setResponsavelID(int responsavelID) {
+        this.responsavelID = responsavelID;
+    }
 
     public int getAlunoID() {
         return alunoID;
@@ -61,4 +71,16 @@ public class Responsavel {
         this.resp = resp;
     }
     
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+    @Override
+    public int compareTo(Responsavel o) {
+        return this.getNome().compareTo(o.getNome());
+    }
 }

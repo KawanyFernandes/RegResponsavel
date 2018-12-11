@@ -14,7 +14,7 @@ import java.util.Observable;
  *
  * @author kawany.fernandes
  */
-public class Aluno extends Observable{
+public class Aluno extends Observable implements Comparable<Aluno>{
     private List<Aluno> alunos = new ArrayList();
 
    private String nome;
@@ -61,5 +61,17 @@ public class Aluno extends Observable{
     public void setAlunos(List<Aluno> alunos) {
         this.alunos = alunos;
     }
+
+    @Override
+    public int compareTo(Aluno o) {
+        return this.getNome().toLowerCase().compareTo(o.getNome().toLowerCase());
+    }
        
+    public boolean equals(Object o) {
+        if(o instanceof Aluno) {
+            Aluno aluno = (Aluno) o;
+            return this.getProntuario()==aluno.getProntuario();
+        }
+        return false;
+    }    
 }

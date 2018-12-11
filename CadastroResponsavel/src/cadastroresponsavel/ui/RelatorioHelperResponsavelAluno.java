@@ -26,12 +26,20 @@ public class RelatorioHelperResponsavelAluno {
         try {
             //obtem os dados
             ResponsavelController rc = new ResponsavelController();
-            List<Responsavel> contatos = rc.visualizarResponsaveis();
+            List<Responsavel> responsaveis = rc.visualizarResponsaveis();
+            
+            foreach(var resp in responsaveis)
+            {
+                Aluno bla = Controlerbla.getAluno(resp.alunoid);
+                resp.setAluno(bla);
+            }
+            
+            
             HashMap<String, Object> params = 
                     new HashMap<String, Object>();
 
             JRBeanCollectionDataSource dt = 
-                new JRBeanCollectionDataSource(contatos);
+                new JRBeanCollectionDataSource(responsaveis);
         
             //Encontra o layout do relatório
             InputStream in = this.getClass().getClassLoader()

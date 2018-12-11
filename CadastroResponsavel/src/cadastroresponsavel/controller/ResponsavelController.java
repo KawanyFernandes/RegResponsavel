@@ -28,4 +28,8 @@ public class ResponsavelController {
     public List visualizarResponsaveis(){
         return resDAO.visualizarResponsaveis();
     }
+    
+    public void removerResponsavel(Responsavel r){
+        resDAO.removerResponsavel(r);
+    }
 }
