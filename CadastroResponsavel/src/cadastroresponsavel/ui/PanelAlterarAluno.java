@@ -9,6 +9,7 @@ import cadastroresponsavel.controller.AlunoController;
 import cadastroresponsavel.controller.ResponsavelController;
 import cadastroresponsavel.model.Aluno;
 import cadastroresponsavel.model.Responsavel;
+import java.awt.BorderLayout;
 import java.util.List;
 import javax.swing.*;
 
@@ -220,7 +221,6 @@ public class PanelAlterarAluno extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarActionPerformed
-        
         a.setNome(tfNome.getText());
         a.setData(tfDataNascimento.getText());
         a.setProntuario(Integer.parseInt("0" + tfProntuario.getText()));
@@ -232,7 +232,7 @@ public class PanelAlterarAluno extends javax.swing.JPanel {
     }//GEN-LAST:event_btAlterarActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-        this.setVisible(false);
+        System.exit(0);        
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed

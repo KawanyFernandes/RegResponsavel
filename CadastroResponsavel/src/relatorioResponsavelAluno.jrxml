@@ -9,7 +9,8 @@
 	<field name="data" class="java.lang.String"/>
 	<field name="aluno.nome" class="java.lang.String"/>
 	<field name="aluno.prontuario" class="java.lang.Integer"/>
-	<field name="id_aluno" class="java.lang.Integer"/>
+	<field name="alunoID" class="java.lang.Integer"/>
+	<field name="aluno.data" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -28,82 +29,118 @@
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="43" splitType="Stretch">
+		<band height="57" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="100" height="30" uuid="879a5c2d-3dca-4578-ac8f-338df52f95b4">
+				<reportElement x="0" y="0" width="80" height="30" uuid="879a5c2d-3dca-4578-ac8f-338df52f95b4">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a6bafdbf-1711-4a7a-82e9-87b254281d9b"/>
 				</reportElement>
-				<text><![CDATA[nome]]></text>
+				<textElement>
+					<font size="11.5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Responsável nome:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="0" width="100" height="30" uuid="72c0fd47-514b-47bc-b09c-4d8296b73838">
+				<reportElement x="80" y="0" width="80" height="30" uuid="72c0fd47-514b-47bc-b09c-4d8296b73838">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5189a3db-7673-43fc-8e5d-8311f03f5e17"/>
 				</reportElement>
-				<text><![CDATA[telefone]]></text>
+				<textElement>
+					<font size="11.5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Responsável telefone:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="200" y="0" width="100" height="30" uuid="00b4842f-f70b-4f06-9c99-1875a844f612">
+				<reportElement x="180" y="0" width="90" height="50" uuid="00b4842f-f70b-4f06-9c99-1875a844f612">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a3ebb1bc-02b7-4604-81ae-e4ec88a0414e"/>
 				</reportElement>
-				<text><![CDATA[data]]></text>
+				<textElement>
+					<font size="11.5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data de nascimento do Responsável:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="300" y="0" width="100" height="30" uuid="3fc04405-d2e0-4864-a599-f6da89b8bbfe">
+				<reportElement x="380" y="0" width="90" height="30" uuid="3fc04405-d2e0-4864-a599-f6da89b8bbfe">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4126e368-02b4-4772-8198-f408930c58a7"/>
 				</reportElement>
-				<text><![CDATA[aluno.nome]]></text>
+				<textElement>
+					<font size="11.5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aluno nome:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="400" y="0" width="80" height="30" uuid="ff798101-4a25-4890-b6ae-332da79bf07c">
+				<reportElement x="280" y="0" width="70" height="30" uuid="ff798101-4a25-4890-b6ae-332da79bf07c">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="11f5d910-4807-413c-ade0-f3abb22a7dfe"/>
 				</reportElement>
-				<text><![CDATA[aluno.prontuario]]></text>
+				<textElement>
+					<font size="11.5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aluno prontuario:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="480" y="0" width="64" height="30" uuid="5e822dda-3949-46dc-999d-8ace0e670f17">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ab5e8815-0f7c-4384-8671-b6364cfe3df1"/>
+				<reportElement x="480" y="0" width="70" height="50" uuid="f2569083-a8a3-47b8-b882-ec4c48c8b205">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6635dd00-0b73-464d-9667-a225d52121e8"/>
 				</reportElement>
-				<text><![CDATA[id_aluno]]></text>
+				<textElement>
+					<font size="11.5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data de nascimento do Aluno:]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="88" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="100" height="30" uuid="1470b569-e9f9-4ac5-942e-6b3e9b237785">
+				<reportElement x="0" y="0" width="70" height="30" uuid="1470b569-e9f9-4ac5-942e-6b3e9b237785">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a6bafdbf-1711-4a7a-82e9-87b254281d9b"/>
 				</reportElement>
+				<textElement>
+					<font size="11"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="0" width="100" height="30" uuid="82803a48-8216-414e-8fe0-36706fdba30a">
+				<reportElement x="80" y="0" width="70" height="30" uuid="82803a48-8216-414e-8fe0-36706fdba30a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5189a3db-7673-43fc-8e5d-8311f03f5e17"/>
 				</reportElement>
+				<textElement>
+					<font size="11"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{telefone}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="200" y="0" width="100" height="30" uuid="fda7ae13-da9f-423f-9fbd-4023620ea0bf">
+				<reportElement x="180" y="0" width="80" height="30" uuid="fda7ae13-da9f-423f-9fbd-4023620ea0bf">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a3ebb1bc-02b7-4604-81ae-e4ec88a0414e"/>
 				</reportElement>
+				<textElement>
+					<font size="11"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="300" y="0" width="100" height="30" uuid="891a2007-4ab5-461e-a2f6-a11567d99fc7">
+				<reportElement x="380" y="0" width="70" height="30" uuid="891a2007-4ab5-461e-a2f6-a11567d99fc7">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4126e368-02b4-4772-8198-f408930c58a7"/>
 				</reportElement>
+				<textElement>
+					<font size="11"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{aluno.nome}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="400" y="0" width="80" height="30" uuid="689498e2-62aa-44fe-b85e-252c1527f565">
+				<reportElement x="290" y="0" width="80" height="30" uuid="689498e2-62aa-44fe-b85e-252c1527f565">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="11f5d910-4807-413c-ade0-f3abb22a7dfe"/>
 				</reportElement>
+				<textElement>
+					<font size="11"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{aluno.prontuario}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="475" y="0" width="70" height="30" uuid="f50f9d8f-5bfc-45b5-91cf-0e329ab440b9">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ab5e8815-0f7c-4384-8671-b6364cfe3df1"/>
+				<reportElement x="490" y="0" width="60" height="30" uuid="f355ec44-a0d2-480f-8bf6-f1dab91fe170">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6635dd00-0b73-464d-9667-a225d52121e8"/>
 				</reportElement>
-				<textFieldExpression><![CDATA[$F{id_aluno}]]></textFieldExpression>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{aluno.data}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

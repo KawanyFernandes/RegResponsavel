@@ -30,7 +30,6 @@ public class Usuario {
         this.prontuario = prontuario;
     }
 
-   
     public String getSenha() {
         return senha;
     }

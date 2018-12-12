@@ -46,7 +46,6 @@ public class Aluno extends Observable implements Comparable<Aluno>{
         this.telefone = telefone;
     }
 
-    
     public String getData() {
         return data;
     }
@@ -54,7 +53,8 @@ public class Aluno extends Observable implements Comparable<Aluno>{
     public void setData(String data) {
         this.data = data;
     }
- public List<Aluno> getAlunos() {
+    
+    public List<Aluno> getAlunos() {
         return alunos;
     }
 

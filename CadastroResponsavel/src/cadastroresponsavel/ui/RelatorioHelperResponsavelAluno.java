@@ -5,7 +5,9 @@
  */
 package cadastroresponsavel.ui;
 
+import cadastroresponsavel.controller.AlunoController;
 import cadastroresponsavel.controller.ResponsavelController;
+import cadastroresponsavel.model.Aluno;
 import cadastroresponsavel.model.Responsavel;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -28,9 +30,11 @@ public class RelatorioHelperResponsavelAluno {
             ResponsavelController rc = new ResponsavelController();
             List<Responsavel> responsaveis = rc.visualizarResponsaveis();
             
-            foreach(var resp in responsaveis)
+            for(Responsavel resp : responsaveis)
             {
-                Aluno bla = Controlerbla.getAluno(resp.alunoid);
+                Aluno bla = new  Aluno();
+                bla.setProntuario(resp.getAlunoID()); 
+                bla = new AlunoController().selectAluno(bla);//getAluno(resp.alunoid);
                 resp.setAluno(bla);
             }
             

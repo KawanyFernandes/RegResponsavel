@@ -208,7 +208,7 @@ public class PanelCadastrarUsuario extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfProntuarioActionPerformed
 
-private void limparFormulario(){
+    private void limparFormulario(){
        tfNome.setText("");
        tfProntuario.setText("");
        tfSenha.setText("");

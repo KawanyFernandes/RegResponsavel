@@ -161,7 +161,7 @@ public class FrameCadastroResponsaveis extends javax.swing.JFrame {
     }//GEN-LAST:event_mnCadastrarUsuarioActionPerformed
 
     private void mnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSairActionPerformed
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_mnSairActionPerformed
 
     private void mnAlterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAlterarSenhaActionPerformed

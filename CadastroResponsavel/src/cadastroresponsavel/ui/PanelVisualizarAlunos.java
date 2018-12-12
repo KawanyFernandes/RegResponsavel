@@ -24,7 +24,7 @@ import javax.swing.JPanel;
  */
 public class PanelVisualizarAlunos extends javax.swing.JPanel {
     private List<Aluno> alunos;
-    private List<Responsavel> responsaveis;
+
     /**
      * Creates new form PanelVisualizarAlunos
      */
@@ -200,7 +200,6 @@ public class PanelVisualizarAlunos extends javax.swing.JPanel {
 
     private void btOrdenarProntuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOrdenarProntuarioActionPerformed
         AlunoController ac = new AlunoController();
-        
         alunos = ac.visualizarAluno();
         alunos.sort(new ComparaProntuario());
         preencherTabela(alunos);
@@ -208,7 +207,6 @@ public class PanelVisualizarAlunos extends javax.swing.JPanel {
 
     private void btOrdenarResponsavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOrdenarResponsavelActionPerformed
         AlunoController ac = new AlunoController();
-        
         alunos = ac.visualizarAluno();       
         alunos.sort(new ComparaResponsavel());
         preencherTabela(alunos);
@@ -231,32 +229,27 @@ public class PanelVisualizarAlunos extends javax.swing.JPanel {
         if(linha < 0) {
             JOptionPane.showMessageDialog(this, "Selecione um contato.");
         } else {
-            
-                alu = ac.selectAluno(alunos.get(linha));
-                JPanel panel = new PanelAlterarAluno(alu);
-                frame.setSize(605, 523);
-                frame.getContentPane().add(BorderLayout.CENTER,panel);
-                frame.add(panel);
-                frame.setVisible(true);
-            
+            alu = ac.selectAluno(alunos.get(linha));
+            JPanel panel = new PanelAlterarAluno(alu);
+            frame.setSize(605, 523);
+            frame.getContentPane().add(BorderLayout.CENTER,panel);
+            frame.add(panel);
+            frame.setVisible(true);
         }
     }//GEN-LAST:event_btAlterarAlunoActionPerformed
 
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
-        AlunoController ac = new AlunoController();
         int linha = tbAlunos.getSelectedRow();
-        int coluna = tbAlunos.getSelectedColumn();
-        Aluno aluno= ac.selectAluno(alunos.get(linha));
         if(linha < 0) {
             JOptionPane.showMessageDialog(this, "Selecione um contato.");
         } else {
+            AlunoController ac = new AlunoController();
+            Aluno aluno= ac.selectAluno(alunos.get(linha));
             ResponsavelController rc = new ResponsavelController();
             List<Responsavel> lista = rc.obterResponsavel(aluno);
             if(lista.size() > 0){
                 JOptionPane.showMessageDialog(this, "ATENÇÃO! \n O Aluno possui responsáveis \n Peço que remova os responsáveis antes de qualquer outra ação");
             }else{
-                
-                
                 ac.remover(aluno);
                 JOptionPane.showMessageDialog(this, "Aluno removido com sucesso!");
             }
@@ -265,20 +258,24 @@ public class PanelVisualizarAlunos extends javax.swing.JPanel {
 
     private void btProcurarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProcurarAlunoActionPerformed
         Aluno alu = new Aluno();
-        alu.setProntuario(Integer.parseInt(tfProntuarioProcurar.getText()));
-        int posicao = alunos.indexOf(alu);
-        if(posicao < 0) {
-            JOptionPane.showMessageDialog(this, "Não foi encontrado contato com este nome.");
-        } else {
-            tbAlunos.setRowSelectionInterval(posicao, posicao);
+        
+        try{
+            int prontuarioSearch = Integer.parseInt(tfProntuarioProcurar.getText());
+            alu.setProntuario(prontuarioSearch);
+            int posicao = alunos.indexOf(alu);
+            if(posicao < 0) {
+                JOptionPane.showMessageDialog(this, "Não foi encontrado contato com este nome.");
+            } else {
+                tbAlunos.setRowSelectionInterval(posicao, posicao);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Digite apenas números!");
+            tfProntuarioProcurar.setText("");
         }
     }//GEN-LAST:event_btProcurarAlunoActionPerformed
 
-
     private void preencherTabela(List alunos) {
-       
         AlunosTableModelo modeloTabela = new AlunosTableModelo(alunos);
-       
         tbAlunos.setModel(modeloTabela);
     }
     

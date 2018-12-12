@@ -173,13 +173,21 @@ public class PanelAlterarSenha extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarActionPerformed
+        String senha = String.valueOf(tfSenha.getPassword());
         String senhaNova = String.valueOf(tfNovaSenha.getPassword());
-        
+        String senhaRepetir = String.valueOf(tfSenhaRepetir.getPassword());
         if(new String(tfNovaSenha.getPassword()).equals(new String(tfSenhaRepetir.getPassword()))) {
-            UsuarioController uc = new UsuarioController();
-            uc.alterarSenha(usuario,senhaNova);
-            JOptionPane.showMessageDialog(null, "Senha alterada com sucesso.");
-            limparFormulario();
+            if( validaCampos(senha, senhaNova, senhaRepetir) == true){
+                if(senha.equals(usuario.getSenha())){
+                    UsuarioController uc = new UsuarioController();
+                    uc.alterarSenha(usuario,senhaNova);
+                    JOptionPane.showMessageDialog(null, "Senha alterada com sucesso.");
+                    limparFormulario();
+                }else{
+                    JOptionPane.showMessageDialog(this, "O dados que foi preenchido no campo senha estão incorreto!\nPeço que digite sua antiga senha.");
+                    limparFormulario();
+                }
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Os dados não conferem, por favor insira dados corretos");
         }
@@ -198,6 +206,23 @@ private void limparFormulario(){
     tfNovaSenha.setText("");
     tfSenhaRepetir.setText("");
 }
+
+private boolean validaCampos(String senha, String novaSenha, String repetirSenha){
+        if(senha.equals("")){
+            JOptionPane.showMessageDialog(this, "Campo SENHA obrigatório!");
+            tfSenha.grabFocus();
+            return false;
+        }else if(novaSenha.equals("")){
+            JOptionPane.showMessageDialog(this, "Campo NOVA SENHA obrigatório!");
+            tfNovaSenha.grabFocus();
+            return false;
+        }else if(repetirSenha.equals("")){
+            JOptionPane.showMessageDialog(this, "Campo REPETIR SENHA obrigatório!");
+            tfSenhaRepetir.grabFocus();
+            return false;
+        }
+        return true;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAlterar;

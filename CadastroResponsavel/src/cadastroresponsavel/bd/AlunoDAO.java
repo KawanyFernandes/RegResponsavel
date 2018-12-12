@@ -25,7 +25,6 @@ public class AlunoDAO {
     private PreparedStatement stm = null;
     private ResultSet rs = null;
     private Connection con = null;
-    private ResponsavelDAO resDAO = new ResponsavelDAO();
     
     public void inserir(Aluno a){
         try{
